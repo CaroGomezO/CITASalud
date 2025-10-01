@@ -1,0 +1,763 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ==================== PALETA ==================== 
+   Azul Principal (Primary): #0077B6
+   Azul Claro/Fondo (Light Blue): #90E0EF
+   Azul Oscuro/Texto (Dark Blue): #03045E
+   Verde Éxito (Success): #00BFA5
+   Rojo Error (Error): #EF476F
+   Gris Neutro (Neutral): #CED4DA
+=================================================== */
+:root {
+    /* Paleta de colores */
+    --color-primary: #0077B6;
+    --color-primary-dark: #005f87;
+    --color-primary-light: #00B4D8;
+    --color-secondary: #90E0EF;
+    --color-text: #03045E;
+    --color-success: #00BFA5;
+    --color-success-dark: #00A38A;
+    --color-error: #EF476F;
+    --color-neutral: #CED4DA;
+    --color-neutral-light: #E9ECEF;
+    --color-bg: #F8F9FA;
+
+    /* Espaciado */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 60px;
+
+    /* Border radius */
+    --radius-sm: 10px;
+    --radius-md: 15px;
+    --radius-lg: 18px;
+    --radius-xl: 30px;
+
+    /* Sombras */
+    --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 20px 60px rgba(3, 4, 94, 0.06);
+    --shadow-primary: 0 10px 30px rgba(0, 119, 182, 0.25);
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 30%, #a2d2ff 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 119, 182, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* ==================== CONTENEDOR ==================== */
+.container {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 30px;
+    padding: 60px 55px;
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+        0 20px 60px rgba(3, 4, 94, 0.06),
+        0 5px 15px rgba(0, 119, 182, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px 30px 0 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #03045E;
+    font-size: 2.4em;
+    margin-bottom: 35px;
+    font-weight: 600;
+    position: relative;
+}
+
+h1::before {
+    content: "\f0f0";
+    /* Font Awesome hospital icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #0077B6;
+    margin-right: 14px;
+    font-size: 0.9em;
+}
+
+/* ==================== FORMULARIO ==================== */
+.form-group {
+    margin-bottom: 26px;
+    position: relative;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #03045E;
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group label i {
+    margin-right: 10px;
+    color: #0077B6;
+    font-size: 1.2em;
+}
+
+select,
+input[type="text"] {
+    width: 100%;
+    padding: 16px 20px;
+    padding-left: 50px;
+    /* Borde más sutil */
+    border: 2px solid #CED4DA;
+    border-radius: 15px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: white;
+    color: #03045E;
+    appearance: none;
+    cursor: pointer;
+}
+
+select:hover,
+input[type="text"]:hover {
+    border-color: #D1DBE5;
+    background: #fff;
+}
+
+select:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #0077B6;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.08);
+    transform: translateY(-1px);
+}
+
+select:disabled,
+input[type="text"]:disabled {
+    background: #F8F9FA;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.form-group::before {
+    content: '';
+    position: absolute;
+    bottom: 23px;
+    left: 18px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.05em;
+    color: #0077B6;
+    pointer-events: none;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+/* Íconos dinámicos según campo */
+.form-group:nth-child(1)::before {
+    content: "\f007";
+}
+
+/* Usuario */
+.form-group:nth-child(2)::before {
+    content: "\f0f1";
+}
+
+/* Especialidad */
+.form-group:nth-child(3)::before {
+    content: "\f0f0";
+}
+
+/* Doctor */
+.form-group:nth-child(4)::before {
+    content: "\f073";
+}
+
+/* Calendario */
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%230077B6' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    cursor: pointer;
+}
+
+/* ==================== HORARIOS ==================== */
+
+#horarios-list {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+#horarios-list button {
+    padding: 14px 5px;
+    background: #fff;
+    border: 2px solid #E9ECEF;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    color: #0077B6;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+#horarios-list button::before {
+    content: "\f017";
+    /* Reloj de Font Awesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+    font-size: 1.3em;
+    color: #0077B6;
+    display: block;
+    margin-bottom: 6px;
+    transition: all 0.3s ease;
+}
+
+#horarios-list button:hover {
+    transform: translateY(-3px);
+    border-color: #0077B6;
+    background: linear-gradient(135deg, #fff 0%, #FAFBFC 100%);
+    box-shadow: 0 8px 20px rgba(0, 119, 182, 0.12);
+}
+
+#horarios-list button.selected {
+    background: #0077B6;
+    color: white;
+    border-color: #005f87;
+    box-shadow: 0 8px 25px rgba(0, 119, 182, 0.35);
+    transform: scale(1.05);
+}
+
+#horarios-list button.selected::before {
+    color: #90E0EF;
+    opacity: 1;
+}
+
+/* ==================== BOTONES PRINCIPALES ==================== */
+#agendar-btn,
+#confirmar-btn,
+#regresar-btn {
+    width: 100%;
+    padding: 17px;
+    font-size: 1.05em;
+    font-weight: 600;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+#agendar-btn {
+    background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);
+    color: white;
+    box-shadow:
+        0 10px 30px rgba(0, 119, 182, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#agendar-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+#agendar-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 15px 40px rgba(0, 119, 182, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#agendar-btn:active {
+    transform: translateY(0);
+}
+
+.botones-accion {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+#confirmar-btn {
+    background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-dark) 100%);
+    color: white;
+    padding: 14px 22px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    box-shadow: 0 4px 12px rgba(0, 191, 165, 0.2);
+}
+
+#confirmar-btn:hover {
+    background: linear-gradient(135deg, var(--color-success-dark) 0%, #008f7a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 191, 165, 0.3);
+}
+
+#confirmar-btn::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+#regresar-btn {
+    background: linear-gradient(135deg, #E8ECF1 0%, #D1DBE5 100%);
+    color: var(--color-text);
+    padding: 14px 22px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+#regresar-btn:hover {
+    background: linear-gradient(135deg, #D1DBE5 0%, #BCC6D0 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+#regresar-btn::before {
+    content: "\f060";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+/* ==================== MENSAJES ==================== */
+#mensaje {
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.95rem;
+    animation: fadeIn 0.4s ease;
+}
+
+.mensaje.exito {
+    background: linear-gradient(135deg, #E8F8F5 0%, #D5F4EC 100%);
+    color: #00BFA5;
+    border-color: #00D4B8;
+    box-shadow: 0 4px 12px rgba(0, 191, 165, 0.1);
+}
+
+.mensaje.error {
+    background: linear-gradient(135deg, #FEEFF1 0%, #FDE3E6 100%);
+    color: #EF476F;
+    border-color: #F77690;
+    box-shadow: 0 4px 12px rgba(239, 71, 111, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== RESUMEN CITA ==================== */
+#resumen-cita {
+    background: linear-gradient(135deg, #FAFBFC 0%, #F5F7FA 100%);
+    border: 1.5px solid #E8ECF1;
+    border-radius: 18px;
+    padding: 30px;
+    margin-top: 28px;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+    overflow: hidden;
+}
+
+#resumen-cita h4 {
+    color: #03045E;
+    font-size: 1.35em;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    letter-spacing: -0.3px;
+}
+
+#resumen-cita h4::before {
+    content: "\f02d";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #0077B6;
+    margin-right: 10px;
+}
+
+#resumen-cita p {
+    margin-bottom: 14px;
+    color: #495057;
+    font-size: 0.96rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+#resumen-cita p:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#resumen-cita p strong {
+    min-width: 130px;
+    color: #03045E;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+#resumen-cita p span {
+    flex: 1;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+#resumen-cita p::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #0077B6;
+    font-size: 1.1em;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+#resumen-cita p:nth-child(2)::before {
+    content: "\f007";
+}
+
+#resumen-cita p:nth-child(3)::before {
+    content: "\f0f1";
+}
+
+#resumen-cita p:nth-child(4)::before {
+    content: "\f0f0";
+}
+
+#resumen-cita p:nth-child(5)::before {
+    content: "\f3c5";
+}
+
+#resumen-cita p:nth-child(6)::before {
+    content: "\f073";
+}
+
+/* ==================== CALENDARIO ==================== */
+.flatpickr-calendar {
+    border-radius: 18px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 119, 182, 0.1) !important;
+}
+
+.flatpickr-day.selected {
+    background: linear-gradient(135deg, #0077B6, #00B4D8) !important;
+    border-color: #005f8e !important;
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3) !important;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 30px;
+        border-radius: 25px;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 28px;
+    }
+
+    #horarios-list {
+        grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+        gap: 10px;
+    }
+
+    .botones-accion {
+        flex-direction: column;
+    }
+
+    #confirmar-btn,
+    #regresar-btn {
+        width: 100%;
+    }
+}
+
+/* ==================== MODAL / ALERTA ==================== */
+/* ==================== MODAL / ALERTA ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 4, 94, 0.6);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeInBackdrop 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+}
+
+@keyframes fadeInBackdrop {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+    padding: 40px 35px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    margin: auto;
+    box-shadow:
+        0 25px 70px rgba(0, 119, 182, 0.2),
+        0 10px 30px rgba(3, 4, 94, 0.15);
+    border: 1px solid rgba(0, 119, 182, 0.15);
+    position: relative;
+    animation: modalSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--color-text);
+    font-size: 1.6em;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.modal-content p {
+    color: #495057;
+    font-size: 1.05em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Botón Aceptar */
+#btn-aceptar {
+    margin-top: 15px;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(0, 119, 182, 0.25);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+#btn-aceptar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+#btn-aceptar:hover::before {
+    left: 100%;
+}
+
+#btn-aceptar:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 119, 182, 0.35);
+}
+
+#btn-aceptar:active {
+    transform: translateY(0);
+}
+
+/* Botón de cerrar (X) - opcional */
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: #495057;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--transition-base);
+}
+
+.modal-close:hover {
+    background: rgba(0, 119, 182, 0.1);
+    color: var(--color-primary);
+    transform: rotate(90deg);
+}
+
+/* ==================== RESPONSIVE MODAL ==================== */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 35px 25px;
+        max-width: 90%;
+    }
+
+    .modal-content h2 {
+        font-size: 1.4em;
+    }
+
+    .modal-content p {
+        font-size: 1em;
+    }
+
+    #btn-aceptar {
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 30px 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.3em;
+    }
+}
