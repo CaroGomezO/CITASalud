@@ -3,5 +3,5 @@
 **Funcionalidades principales**
 - Agendar citas médicas.
 - Modificar citas médicas.
-- Cancelar citas, indicando un motivo.
+- Cancelar citas médicas, indicando un motivo.
 - Visualizar estadísticas de asistencia e inasistencia.
